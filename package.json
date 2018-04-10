@@ -2,6 +2,10 @@
   "name": "my-reads",
   "version": "0.1.0",
   "private": true,
+  "prettier": {
+    "semi": true,
+    "singleQuote": true
+  },
   "dependencies": {
     "prop-types": "^15.6.1",
     "react": "^16.3.1",
