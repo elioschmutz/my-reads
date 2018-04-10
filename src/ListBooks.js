@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 
 class ListBooks extends Component {
   static propTypes = {
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    loading: PropTypes.bool.isRequired
   };
 
   render() {
-    const { books } = this.props;
+    const { books, loading } = this.props;
 
     return (
       <div className="list-books">
@@ -27,16 +28,19 @@ class ListBooks extends Component {
             </div>
           </div>
           <Shelf
+            loading={loading}
             shelfTitleImageClass="fa-clock"
             shelfTitle="Currently reading"
             books={books.filter(book => book.shelf === 'currentlyReading')}
           />
           <Shelf
+            loading={loading}
             shelfTitleImageClass="fa-bookmark"
             shelfTitle="Want to read"
             books={books.filter(book => book.shelf === 'wantToRead')}
           />
           <Shelf
+            loading={loading}
             shelfTitleImageClass="fa-check"
             shelfTitle="Read"
             books={books.filter(book => book.shelf === 'read')}

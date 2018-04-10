@@ -6,14 +6,21 @@ import * as BooksAPI from './BooksAPI';
 
 class App extends Component {
   state = {
-    books: []
+    books: [],
+    loading: 'loading'
   };
   componentDidMount() {
-    BooksAPI.getAll().then(books => {
-      this.setState({
-        books
-      });
-    });
+    BooksAPI.getAll().then(
+      books => {
+        this.setState({
+          books: books,
+          loading: 'done'
+        });
+      },
+      () => {
+        this.setState({ loading: 'error' });
+      }
+    );
   }
   render() {
     return (
@@ -21,7 +28,9 @@ class App extends Component {
         <Route
           exact
           path="/"
-          render={() => <ListBooks books={this.state.books} />}
+          render={() => (
+            <ListBooks books={this.state.books} loading={this.state.loading} />
+          )}
         />
       </div>
     );
