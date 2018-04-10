@@ -18,9 +18,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        {JSON.stringify(this.state.books)}
-        <Route exact path="/" component={ListBooks} />
-        }
+        <Route
+          exact
+          path="/"
+          render={() => <ListBooks books={this.state.books} />}
+        />
       </div>
     );
   }
