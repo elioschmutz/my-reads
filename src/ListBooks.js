@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Shelf from './Shelf';
 import PropTypes from 'prop-types';
+import { shelfs } from './config';
 
 class ListBooks extends Component {
   static propTypes = {
@@ -28,27 +29,15 @@ class ListBooks extends Component {
               </button>
             </div>
           </div>
-          <Shelf
-            loading={loading}
-            onMoveBook={onMoveBook}
-            shelfTitleImageClass="fa-clock"
-            shelfTitle="Currently reading"
-            books={books.filter(book => book.shelf === 'currentlyReading')}
-          />
-          <Shelf
-            loading={loading}
-            onMoveBook={onMoveBook}
-            shelfTitleImageClass="fa-bookmark"
-            shelfTitle="Want to read"
-            books={books.filter(book => book.shelf === 'wantToRead')}
-          />
-          <Shelf
-            loading={loading}
-            onMoveBook={onMoveBook}
-            shelfTitleImageClass="fa-check"
-            shelfTitle="Read"
-            books={books.filter(book => book.shelf === 'read')}
-          />
+          {shelfs.map(shelf => (
+            <Shelf
+              key={shelf.id}
+              shelf={shelf}
+              loading={loading}
+              onMoveBook={onMoveBook}
+              books={books.filter(book => book.shelf === shelf.id)}
+            />
+          ))}
         </div>
       </div>
     );

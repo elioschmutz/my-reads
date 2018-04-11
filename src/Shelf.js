@@ -4,29 +4,22 @@ import Book from './Book';
 
 class Shelf extends Component {
   static propTypes = {
-    shelfTitleImageClass: PropTypes.string.isRequired,
-    shelfTitle: PropTypes.string.isRequired,
+    shelf: PropTypes.object.isRequired,
     books: PropTypes.array.isRequired,
     loading: PropTypes.string.isRequired,
     onMoveBook: PropTypes.func.isRequired
   };
 
   render() {
-    const {
-      shelfTitleImageClass,
-      shelfTitle,
-      books,
-      loading,
-      onMoveBook
-    } = this.props;
+    const { shelf, books, loading, onMoveBook } = this.props;
 
     return (
       <div className="shelf">
         <div className="row my-3 border-bottom">
           <div className="col">
             <h2>
-              <span className={`fa ${shelfTitleImageClass}`} />
-              {` ${shelfTitle}`}
+              <span className={`fa ${shelf.faClass}`} />
+              {` ${shelf.title}`}
             </h2>
           </div>
         </div>
@@ -39,7 +32,10 @@ class Shelf extends Component {
             loading === 'done' && <span>No books in this shelf</span>}
           {this.props.books.map(book => (
             <div className="col-sm-4 col-md-3" key={book.id}>
-              <Book book={book} onMoveBook={shelf => onMoveBook(book, shelf)} />
+              <Book
+                book={book}
+                onMoveBook={newShelf => onMoveBook(book, newShelf)}
+              />
             </div>
           ))}
         </div>

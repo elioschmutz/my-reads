@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Book.css';
+import { shelfs } from './config';
 
 class Book extends Component {
   static propTypes = {
     book: PropTypes.object.isRequired,
     onMoveBook: PropTypes.func.isRequired
   };
-
+  getShelfs() {
+    return shelfs
+      .concat({
+        id: 'none',
+        title: 'None',
+        faClass: 'fa-times'
+      })
+      .filter(shelf => shelf.id !== this.props.book.shelf);
+  }
   render() {
     const { book, onMoveBook } = this.props;
-
     return (
       <div className="book">
         <div className="card border-light">
@@ -34,24 +42,15 @@ class Book extends Component {
                 Move to...
               </button>
               <div className="dropdown-menu">
-                <a
-                  onClick={() => onMoveBook('currentlyReading')}
-                  className="dropdown-item active"
-                >
-                  <span className="fa fa-clock" /> Currently reading
-                </a>
-                <a
-                  onClick={() => onMoveBook('wantToRead')}
-                  className="dropdown-item"
-                >
-                  <span className="fa fa-bookmark" /> Want to read
-                </a>
-                <a onClick={() => onMoveBook('read')} className="dropdown-item">
-                  <span className="fa fa-check" /> Read
-                </a>
-                <a onClick={() => onMoveBook('')} className="dropdown-item">
-                  <span className="fa fa-times" /> None
-                </a>
+                {this.getShelfs().map(shelf => (
+                  <a
+                    key={shelf.id}
+                    onClick={() => onMoveBook(shelf.id)}
+                    className="dropdown-item"
+                  >
+                    <span className={`fa ${shelf.faClass}`} /> {shelf.title}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
