@@ -21,7 +21,7 @@ class Book extends Component {
     const { book, onMoveBook } = this.props;
     return (
       <div className="book">
-        <div className="card border-light">
+        <div className="card">
           <div
             className="card-img-top"
             style={{
