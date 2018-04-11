@@ -8,15 +8,20 @@ class Book extends Component {
     book: PropTypes.object.isRequired,
     onMoveBook: PropTypes.func.isRequired
   };
+  bookImage() {
+    const imageLinks = this.props.book.imageLinks;
+    return imageLinks ? imageLinks.smallThumbnail : 'fallback.png';
+  }
   render() {
     const { book, onMoveBook } = this.props;
+
     return (
       <div className="book">
         <div className="card">
           <div
             className="card-img-top"
             style={{
-              backgroundImage: `url(${book.imageLinks.smallThumbnail})`
+              backgroundImage: `url(${this.bookImage()})`
             }}
           />
           <div className="card-body">
