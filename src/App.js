@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListBooks from './ListBooks';
+import SearchPage from './SearchPage';
 import { Route } from 'react-router-dom';
 import './App.css';
 import * as BooksAPI from './BooksAPI';
@@ -7,6 +8,8 @@ import * as BooksAPI from './BooksAPI';
 class App extends Component {
   state = {
     books: [],
+    searchedBooks: [],
+    searchQuery: '',
     loading: 'loading'
   };
   componentDidMount() {
@@ -32,6 +35,33 @@ class App extends Component {
       };
     });
   };
+  updateQuery = query => {
+    this.setState(() => ({
+      searchQuery: query
+    }));
+    this.searchBook(query);
+  };
+
+  searchBook = query => {
+    if (query < 1) {
+      this.setState(() => ({
+        searchedBooks: []
+      }));
+      return;
+    }
+    BooksAPI.search(query).then(books => {
+      if (books.error) {
+        this.setState(() => ({
+          searchedBooks: []
+        }));
+        return;
+      }
+      this.setState(() => ({
+        searchedBooks: books
+      }));
+    });
+  };
+
   render() {
     return (
       <div>
@@ -48,6 +78,19 @@ class App extends Component {
             <ListBooks
               books={this.state.books}
               loading={this.state.loading}
+              onMoveBook={this.moveBook}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/add-books"
+          render={() => (
+            <SearchPage
+              books={this.state.searchedBooks}
+              loading={this.state.loading}
+              query={this.state.searchQuery}
+              onUpdateQuery={this.updateQuery}
               onMoveBook={this.moveBook}
             />
           )}
