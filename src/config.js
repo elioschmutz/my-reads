@@ -15,3 +15,9 @@ export const shelfs = [
     id: 'read'
   }
 ];
+
+export const emptyShelf = {
+  id: 'none',
+  title: 'None',
+  faClass: 'fa-times'
+};

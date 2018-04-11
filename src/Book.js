@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Book.css';
-import { shelfs } from './config';
+import { shelfs, emptyShelf } from './config';
 
 class Book extends Component {
   static propTypes = {
@@ -10,11 +10,7 @@ class Book extends Component {
   };
   getShelfs() {
     return shelfs
-      .concat({
-        id: 'none',
-        title: 'None',
-        faClass: 'fa-times'
-      })
+      .concat(emptyShelf)
       .filter(shelf => shelf.id !== this.props.book.shelf);
   }
   render() {
