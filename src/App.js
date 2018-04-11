@@ -35,6 +35,12 @@ class App extends Component {
   render() {
     return (
       <div>
+        <nav className="main-navigation navbar navbar-expand-md navbar-dark bg-primary">
+          <a className="navbar-brand" href="/">
+            <h1>MyReads</h1>
+          </a>
+          <div className="collapse navbar-collapse" id="main-navigation" />
+        </nav>
         <Route
           exact
           path="/"

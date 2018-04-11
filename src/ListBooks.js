@@ -15,12 +15,6 @@ class ListBooks extends Component {
 
     return (
       <div className="list-books">
-        <nav className="main-navigation navbar navbar-expand-md navbar-dark bg-primary">
-          <a className="navbar-brand" href="/">
-            <h1>MyReads</h1>
-          </a>
-          <div className="collapse navbar-collapse" id="main-navigation" />
-        </nav>
         <div className="container">
           <div className="row my-3">
             <div className="col">
