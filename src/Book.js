@@ -8,11 +8,6 @@ class Book extends Component {
     book: PropTypes.object.isRequired,
     onMoveBook: PropTypes.func.isRequired
   };
-  getShelfs() {
-    return shelfs
-      .concat(emptyShelf)
-      .filter(shelf => shelf.id !== this.props.book.shelf);
-  }
   render() {
     const { book, onMoveBook } = this.props;
     return (
@@ -38,15 +33,27 @@ class Book extends Component {
                 Move to...
               </button>
               <div className="dropdown-menu">
-                {this.getShelfs().map(shelf => (
-                  <a
-                    key={shelf.id}
-                    onClick={() => onMoveBook(shelf.id)}
-                    className="dropdown-item"
-                  >
-                    <span className={`fa ${shelf.faClass}`} /> {shelf.title}
-                  </a>
-                ))}
+                {shelfs.concat(emptyShelf).map(shelf => {
+                  if (
+                    shelf.id === book.shelf ||
+                    (shelf.id === emptyShelf.id && !book.shelf)
+                  ) {
+                    return (
+                      <span key={shelf.id} className="dropdown-item active">
+                        <span className={`fa ${shelf.faClass}`} /> {shelf.title}
+                      </span>
+                    );
+                  }
+                  return (
+                    <a
+                      key={shelf.id}
+                      onClick={() => onMoveBook(shelf.id)}
+                      className="dropdown-item"
+                    >
+                      <span className={`fa ${shelf.faClass}`} /> {shelf.title}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
