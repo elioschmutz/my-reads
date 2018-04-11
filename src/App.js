@@ -22,6 +22,16 @@ class App extends Component {
       }
     );
   }
+  moveBook = (book, shelf) => {
+    BooksAPI.update(book, shelf);
+    this.setState(prevState => {
+      const books = prevState.books.filter(b => b.id !== book.id);
+      book.shelf = shelf;
+      return {
+        books: books.concat(book)
+      };
+    });
+  };
   render() {
     return (
       <div>
@@ -29,7 +39,11 @@ class App extends Component {
           exact
           path="/"
           render={() => (
-            <ListBooks books={this.state.books} loading={this.state.loading} />
+            <ListBooks
+              books={this.state.books}
+              loading={this.state.loading}
+              onMoveBook={this.moveBook}
+            />
           )}
         />
       </div>

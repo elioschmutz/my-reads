@@ -7,11 +7,18 @@ class Shelf extends Component {
     shelfTitleImageClass: PropTypes.string.isRequired,
     shelfTitle: PropTypes.string.isRequired,
     books: PropTypes.array.isRequired,
-    loading: PropTypes.bool.isRequired
+    loading: PropTypes.string.isRequired,
+    onMoveBook: PropTypes.func.isRequired
   };
 
   render() {
-    const { shelfTitleImageClass, shelfTitle, books, loading } = this.props;
+    const {
+      shelfTitleImageClass,
+      shelfTitle,
+      books,
+      loading,
+      onMoveBook
+    } = this.props;
 
     return (
       <div className="shelf">
@@ -32,7 +39,7 @@ class Shelf extends Component {
             loading === 'done' && <span>No books in this shelf</span>}
           {this.props.books.map(book => (
             <div className="col-sm-4 col-md-3" key={book.id}>
-              <Book book={book} />
+              <Book book={book} onMoveBook={shelf => onMoveBook(book, shelf)} />
             </div>
           ))}
         </div>

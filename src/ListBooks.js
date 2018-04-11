@@ -5,11 +5,12 @@ import PropTypes from 'prop-types';
 class ListBooks extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
-    loading: PropTypes.bool.isRequired
+    loading: PropTypes.string.isRequired,
+    onMoveBook: PropTypes.func.isRequired
   };
 
   render() {
-    const { books, loading } = this.props;
+    const { books, loading, onMoveBook } = this.props;
 
     return (
       <div className="list-books">
@@ -29,18 +30,21 @@ class ListBooks extends Component {
           </div>
           <Shelf
             loading={loading}
+            onMoveBook={onMoveBook}
             shelfTitleImageClass="fa-clock"
             shelfTitle="Currently reading"
             books={books.filter(book => book.shelf === 'currentlyReading')}
           />
           <Shelf
             loading={loading}
+            onMoveBook={onMoveBook}
             shelfTitleImageClass="fa-bookmark"
             shelfTitle="Want to read"
             books={books.filter(book => book.shelf === 'wantToRead')}
           />
           <Shelf
             loading={loading}
+            onMoveBook={onMoveBook}
             shelfTitleImageClass="fa-check"
             shelfTitle="Read"
             books={books.filter(book => book.shelf === 'read')}
