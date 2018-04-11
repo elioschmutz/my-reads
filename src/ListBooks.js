@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Shelf from './Shelf';
 import PropTypes from 'prop-types';
 import { shelfs } from './config';
+import { Link } from 'react-router-dom';
 
 class ListBooks extends Component {
   static propTypes = {
@@ -18,9 +19,9 @@ class ListBooks extends Component {
         <div className="container">
           <div className="row my-3">
             <div className="col">
-              <button type="button" className="btn btn-secondary float-right">
+              <Link className="btn btn-secondary float-right" to="/add-books">
                 <span className="fa fa-plus">&nbsp;</span> Add book
-              </button>
+              </Link>
             </div>
           </div>
           {shelfs.map(shelf => (
