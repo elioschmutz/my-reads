@@ -71,30 +71,32 @@ class App extends Component {
           </a>
           <div className="collapse navbar-collapse" id="main-navigation" />
         </nav>
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <ListBooks
-              books={this.state.books}
-              loading={this.state.loading}
-              onMoveBook={this.moveBook}
-            />
-          )}
-        />
-        <Route
-          exact
-          path="/add-books"
-          render={() => (
-            <SearchPage
-              books={this.state.searchedBooks}
-              loading={this.state.loading}
-              query={this.state.searchQuery}
-              onUpdateQuery={this.updateQuery}
-              onMoveBook={this.moveBook}
-            />
-          )}
-        />
+        <div className="container">
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <ListBooks
+                books={this.state.books}
+                loading={this.state.loading}
+                onMoveBook={this.moveBook}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/add-books"
+            render={() => (
+              <SearchPage
+                books={this.state.searchedBooks}
+                loading={this.state.loading}
+                query={this.state.searchQuery}
+                onUpdateQuery={this.updateQuery}
+                onMoveBook={this.moveBook}
+              />
+            )}
+          />
+        </div>
       </div>
     );
   }

@@ -16,24 +16,22 @@ class ListBooks extends Component {
 
     return (
       <div className="list-books">
-        <div className="container">
-          <div className="row my-3">
-            <div className="col">
-              <Link className="btn btn-secondary float-right" to="/add-books">
-                <span className="fa fa-plus">&nbsp;</span> Add book
-              </Link>
-            </div>
+        <div className="row my-3">
+          <div className="col">
+            <Link className="btn btn-secondary float-right" to="/add-books">
+              <span className="fa fa-plus">&nbsp;</span> Add book
+            </Link>
           </div>
-          {shelfs.map(shelf => (
-            <Shelf
-              key={shelf.id}
-              shelf={shelf}
-              loading={loading}
-              onMoveBook={onMoveBook}
-              books={books.filter(book => book.shelf === shelf.id)}
-            />
-          ))}
         </div>
+        {shelfs.map(shelf => (
+          <Shelf
+            key={shelf.id}
+            shelf={shelf}
+            loading={loading}
+            onMoveBook={onMoveBook}
+            books={books.filter(book => book.shelf === shelf.id)}
+          />
+        ))}
       </div>
     );
   }
