@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Book from './Book';
+import Spinner from './Spinner';
 
 class Shelf extends Component {
   static propTypes = {
@@ -24,7 +25,7 @@ class Shelf extends Component {
           </div>
         </div>
         <div className="row">
-          {loading === 'loading' && <span>Loading...</span>}
+          {loading === 'loading' && <Spinner />}
           {loading === 'error' && (
             <span>Error while loading the books in this shelf</span>
           )}
