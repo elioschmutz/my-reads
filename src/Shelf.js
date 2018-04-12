@@ -36,10 +36,7 @@ class Shelf extends Component {
             loading === 'done' && <span>{this.props.emptyShelfText}</span>}
           {this.props.books.map(book => (
             <div className="col-sm-4 col-md-3" key={book.id}>
-              <Book
-                book={book}
-                onMoveBook={newShelf => onMoveBook(book, newShelf)}
-              />
+              <Book book={book} onMoveBook={onMoveBook} />
             </div>
           ))}
         </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import MoveBookButton from './MoveBookButton';
 import './Book.css';
-import { shelfs, emptyShelf } from './config';
 import { Link } from 'react-router-dom';
 
 class Book extends Component {
@@ -37,38 +37,7 @@ class Book extends Component {
             <p className="card-text">{book.authors}</p>
           </div>
           <div className="card-body">
-            <div className="dropdown">
-              <button
-                className="btn btn-secondary dropdown-toggle"
-                type="button"
-                data-toggle="dropdown"
-              >
-                Move to...
-              </button>
-              <div className="dropdown-menu">
-                {shelfs.concat(emptyShelf).map(shelf => {
-                  if (
-                    shelf.id === book.shelf ||
-                    (shelf.id === emptyShelf.id && !book.shelf)
-                  ) {
-                    return (
-                      <span key={shelf.id} className="dropdown-item active">
-                        <span className={`fa ${shelf.faClass}`} /> {shelf.title}
-                      </span>
-                    );
-                  }
-                  return (
-                    <a
-                      key={shelf.id}
-                      onClick={() => onMoveBook(shelf.id)}
-                      className="dropdown-item"
-                    >
-                      <span className={`fa ${shelf.faClass}`} /> {shelf.title}
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
+            <MoveBookButton book={book} onMoveBook={onMoveBook} />
           </div>
         </div>
       </div>

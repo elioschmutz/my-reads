@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './Book.css';
 import { Link } from 'react-router-dom';
 import { languages, shelfs } from './config';
+import MoveBookButton from './MoveBookButton';
 
 class BookDetailPage extends Component {
   state = {
@@ -61,6 +62,9 @@ class BookDetailPage extends Component {
               <li>Language: {languages[book.language]}</li>
             </ul>
             <p>{book.description}</p>
+            <p>
+              <MoveBookButton book={book} onMoveBook={onMoveBook} />
+            </p>
           </div>
         </div>
       </div>
