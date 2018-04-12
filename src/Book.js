@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Book.css';
 import { shelfs, emptyShelf } from './config';
+import { Link } from 'react-router-dom';
 
 class Book extends Component {
   static propTypes = {
@@ -25,7 +26,14 @@ class Book extends Component {
             }}
           />
           <div className="card-body">
-            <h5 className="card-title">{book.title}</h5>
+            <Link
+              to={{
+                pathname: `/book/${book.id}`,
+                state: { book: book }
+              }}
+            >
+              <h5 className="card-title">{book.title}</h5>
+            </Link>
             <p className="card-text">{book.authors}</p>
           </div>
           <div className="card-body">

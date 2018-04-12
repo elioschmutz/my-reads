@@ -21,3 +21,10 @@ export const emptyShelf = {
   title: 'None',
   faClass: 'fa-times'
 };
+
+export const languages = {
+  en: 'English',
+  de: 'German',
+  fr: 'Frensh',
+  it: 'Italien'
+};

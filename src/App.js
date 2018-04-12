@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ListBooks from './ListBooks';
 import SearchPage from './SearchPage';
+import BookDetailPage from './BookDetailPage';
 import { Route } from 'react-router-dom';
 import './App.css';
 import * as BooksAPI from './BooksAPI';
@@ -94,6 +95,13 @@ class App extends Component {
                 onUpdateQuery={this.updateQuery}
                 onMoveBook={this.moveBook}
               />
+            )}
+          />
+          <Route
+            exact
+            path="/book/:bookId"
+            render={props => (
+              <BookDetailPage {...props} onMoveBook={this.moveBook} />
             )}
           />
         </div>
