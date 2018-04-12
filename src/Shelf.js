@@ -27,6 +27,7 @@ class Shelf extends Component {
             </h2>
           </div>
         </div>
+
         <div className="row">
           {loading === 'error' && (
             <span>Error while loading the books in this shelf</span>

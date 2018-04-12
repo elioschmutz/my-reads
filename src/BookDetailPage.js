@@ -43,12 +43,15 @@ class BookDetailPage extends Component {
             </Link>
           </div>
         </div>
+
         <div className="row">
           <div className="col col-md-3">
             <img className="card-img" src={this.bookImage()} alt="" />
           </div>
+
           <div className="col col-md-9">
             <h2>{book.title}</h2>
+
             <ul>
               <li>Rating: {book.averageRating}</li>
               <li>Shelf: {this.readableShelf(book.shelf)}</li>
@@ -61,7 +64,9 @@ class BookDetailPage extends Component {
               <li>Pages: {book.pageCount}</li>
               <li>Language: {languages[book.language]}</li>
             </ul>
+
             <p>{book.description}</p>
+
             <div>
               <MoveBookButton book={book} onMoveBook={onMoveBook} />
             </div>

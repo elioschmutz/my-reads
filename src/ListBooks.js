@@ -23,6 +23,7 @@ class ListBooks extends Component {
             </Link>
           </div>
         </div>
+
         {shelfs.map(shelf => (
           <Shelf
             key={shelf.id}

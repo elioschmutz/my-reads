@@ -25,6 +25,7 @@ class Book extends Component {
               backgroundImage: `url(${this.bookImage()})`
             }}
           />
+
           <div className="card-body">
             <Link
               to={{
@@ -36,6 +37,7 @@ class Book extends Component {
             </Link>
             <p className="card-text">{book.authors}</p>
           </div>
+
           <div className="card-body">
             <MoveBookButton book={book} onMoveBook={onMoveBook} />
           </div>

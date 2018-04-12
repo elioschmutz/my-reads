@@ -78,6 +78,7 @@ class App extends Component {
           </a>
           <div className="collapse navbar-collapse" id="main-navigation" />
         </nav>
+
         <div className="container">
           <Route
             exact
@@ -90,6 +91,7 @@ class App extends Component {
               />
             )}
           />
+
           <Route
             exact
             path="/add-books"
@@ -103,6 +105,7 @@ class App extends Component {
               />
             )}
           />
+
           <Route
             exact
             path="/book/:bookId"

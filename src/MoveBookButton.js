@@ -19,6 +19,7 @@ class MoveBookButton extends Component {
         >
           Move to...
         </button>
+
         <div className="dropdown-menu">
           {shelfs.concat(emptyShelf).map(shelf => {
             if (

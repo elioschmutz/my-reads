@@ -28,6 +28,7 @@ class SearchPage extends Component {
             </Link>
           </div>
         </div>
+
         <div className="row">
           <div className="col">
             <input
@@ -39,6 +40,7 @@ class SearchPage extends Component {
             />
           </div>
         </div>
+
         <Shelf
           shelf={{
             title: 'Available books',
