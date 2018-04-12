@@ -33,6 +33,7 @@ class SearchPage extends Component {
             <span className="fa fa-arrow-left">&nbsp;</span> Back
           </Link>
         </NavigationContainer>
+
         <div className="row">
           <div className="col">
             <input
