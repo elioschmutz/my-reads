@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ListBooks from './ListBooks';
+import ListBooksPage from './ListBooksPage';
 import SearchPage from './SearchPage';
 import BookDetailPage from './BookDetailPage';
 import { Route } from 'react-router-dom';
@@ -84,7 +84,7 @@ class App extends Component {
             exact
             path="/"
             render={() => (
-              <ListBooks
+              <ListBooksPage
                 books={this.state.books}
                 loading={this.state.loading}
                 onMoveBook={this.moveBook}

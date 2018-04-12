@@ -5,7 +5,7 @@ import { shelfs } from './config';
 import { Link } from 'react-router-dom';
 import NavigationContainer from './NavigationContainer';
 
-class ListBooks extends Component {
+class ListBooksPage extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
     loading: PropTypes.string.isRequired,
@@ -37,4 +37,4 @@ class ListBooks extends Component {
   }
 }
 
-export default ListBooks;
+export default ListBooksPage;
