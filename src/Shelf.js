@@ -27,8 +27,14 @@ class Shelf extends Component {
             </h2>
           </div>
         </div>
+        {loading === 'loading' && (
+          <div className="row my-3">
+            <div clsasName="col">
+              <Spinner />
+            </div>
+          </div>
+        )}
         <div className="row">
-          {loading === 'loading' && <Spinner />}
           {loading === 'error' && (
             <span>Error while loading the books in this shelf</span>
           )}

@@ -9,6 +9,7 @@ class SearchPage extends Component {
     onMoveBook: PropTypes.func.isRequired,
     books: PropTypes.array.isRequired,
     query: PropTypes.string.isRequired,
+    loading: PropTypes.string.isRequired,
     onUpdateQuery: PropTypes.func.isRequired
   };
   getEmptyShelfText() {

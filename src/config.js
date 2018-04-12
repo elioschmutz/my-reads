@@ -28,3 +28,9 @@ export const languages = {
   fr: 'Frensh',
   it: 'Italien'
 };
+
+export const loading = {
+  done: 'done',
+  loading: 'loading',
+  error: 'error'
+};

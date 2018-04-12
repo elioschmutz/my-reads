@@ -5,27 +5,29 @@ import BookDetailPage from './BookDetailPage';
 import { Route } from 'react-router-dom';
 import './App.css';
 import * as BooksAPI from './BooksAPI';
+import { loading } from './config';
 
 class App extends Component {
   state = {
     books: [],
     searchedBooks: [],
     searchQuery: '',
-    loading: 'loading'
+    loading: loading.loading
   };
   componentDidMount() {
     BooksAPI.getAll().then(
       books => {
         this.setState({
           books: books,
-          loading: 'done'
+          loading: loading.done
         });
       },
       () => {
-        this.setState({ loading: 'error' });
+        this.setState({ loading: loading.error });
       }
     );
   }
+
   moveBook = (book, shelf) => {
     BooksAPI.update(book, shelf);
     this.setState(prevState => {
@@ -44,21 +46,25 @@ class App extends Component {
   };
 
   searchBook = query => {
+    this.setState({ loading: loading.loading });
     if (query < 1) {
       this.setState(() => ({
-        searchedBooks: []
+        searchedBooks: [],
+        loading: loading.done
       }));
       return;
     }
     BooksAPI.search(query).then(books => {
       if (books.error) {
         this.setState(() => ({
-          searchedBooks: []
+          searchedBooks: [],
+          loading: loading.done
         }));
         return;
       }
       this.setState(() => ({
-        searchedBooks: books
+        searchedBooks: books,
+        loading: loading.done
       }));
     });
   };
