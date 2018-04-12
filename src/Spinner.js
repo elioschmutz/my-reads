@@ -4,19 +4,18 @@ import { loading } from './config';
 
 class Spinner extends Component {
   static propTypes = {
-    loading: PropTypes.string.isRequired
+    loading: PropTypes.string
   };
   static defaultProps = {
     loading: loading.loading
   };
   render() {
-    if (this.props.loading !== loading.loading) {
-      return null;
-    }
     return (
-      <span className="float-right">
-        <i className="fa fa-spinner fa-spin" />
-      </span>
+      this.props.loading === loading.loading && (
+        <span className="float-right">
+          <i className="fa fa-spinner fa-spin" />
+        </span>
+      )
     );
   }
 }
