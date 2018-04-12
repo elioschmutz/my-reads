@@ -14,7 +14,15 @@ class App extends Component {
     searchQuery: '',
     loading: loading.loading
   };
+
   componentDidMount() {
+    this.getAllBooks();
+  }
+
+  /**
+   * Fetches all selected books
+   */
+  getAllBooks() {
     BooksAPI.getAll().then(
       books => {
         this.setState({
@@ -28,6 +36,11 @@ class App extends Component {
     );
   }
 
+  /**
+   * Moves a book to a new shelf.
+   * @param  {object} book - A book object
+   * @param  {string} shelf - The id of the new shelf
+   */
   moveBook = (book, shelf) => {
     BooksAPI.update(book, shelf);
     this.setState(prevState => {
@@ -38,6 +51,11 @@ class App extends Component {
       };
     });
   };
+
+  /**
+   * Updates the search query.
+   * @param  {string} query - Searchstring
+   */
   updateQuery = query => {
     this.setState(() => ({
       searchQuery: query
@@ -45,8 +63,14 @@ class App extends Component {
     this.searchBook(query);
   };
 
+  /**
+   * Searches books by a querystring
+   * @param  {string} query - Searchstring
+   */
   searchBook = query => {
     this.setState({ loading: loading.loading });
+
+    // Set no books if the query is less than 1 characters
     if (query < 1) {
       this.setState(() => ({
         searchedBooks: [],
@@ -54,7 +78,9 @@ class App extends Component {
       }));
       return;
     }
+
     BooksAPI.search(query).then(books => {
+      // Set no books if there was an error loading books
       if (books.error) {
         this.setState(() => ({
           searchedBooks: [],
@@ -62,10 +88,23 @@ class App extends Component {
         }));
         return;
       }
+
+      // Set the new books
       this.setState(() => ({
         searchedBooks: books,
         loading: loading.done
       }));
+    });
+  };
+
+  /**
+   * Fetches a book by it's ID
+   * @param  {string} bookId - ID of a book
+   */
+  getBook = bookId => {
+    this.setState({ loading: loading.loading });
+    BooksAPI.get(bookId).then(book => {
+      this.setState(() => {});
     });
   };
 

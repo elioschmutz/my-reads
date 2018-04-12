@@ -6,9 +6,11 @@ class Spinner extends Component {
   static propTypes = {
     loading: PropTypes.string
   };
+
   static defaultProps = {
     loading: loading.loading
   };
+
   render() {
     return (
       this.props.loading === loading.loading && (

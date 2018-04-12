@@ -11,9 +11,11 @@ class Shelf extends Component {
     onMoveBook: PropTypes.func.isRequired,
     emptyShelfText: PropTypes.string
   };
+
   static defaultProps = {
     emptyShelfText: 'No books in this shelf'
   };
+
   render() {
     const { shelf, books, loading, onMoveBook } = this.props;
 

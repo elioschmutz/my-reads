@@ -9,10 +9,16 @@ class Book extends Component {
     book: PropTypes.object.isRequired,
     onMoveBook: PropTypes.func.isRequired
   };
+
+  /**
+   * Returns the image url of the book
+   * @return {string}
+   */
   bookImage() {
     const imageLinks = this.props.book.imageLinks;
     return imageLinks ? imageLinks.smallThumbnail : 'fallback.png';
   }
+
   render() {
     const { book, onMoveBook } = this.props;
 

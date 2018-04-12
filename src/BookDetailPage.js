@@ -23,14 +23,24 @@ class BookDetailPage extends Component {
     console.log(this.props.match.params);
   }
 
+  /**
+   * Returns the image url of the book
+   * @return {string}
+   */
   bookImage() {
     const imageLinks = this.state.book.imageLinks;
     return imageLinks ? imageLinks.smallThumbnail : 'fallback.png';
   }
+
+  /**
+   * Returns the shelf title of the current book
+   * @return {string}
+   */
   readableShelf() {
     const shelf = shelfs.find(s => s.id === this.state.book.shelf);
     return shelf ? shelf.title : '-';
   }
+
   render() {
     const { onMoveBook } = this.props;
     const { book } = this.state;
