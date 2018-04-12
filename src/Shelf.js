@@ -8,9 +8,12 @@ class Shelf extends Component {
     shelf: PropTypes.object.isRequired,
     books: PropTypes.array.isRequired,
     loading: PropTypes.string.isRequired,
-    onMoveBook: PropTypes.func.isRequired
+    onMoveBook: PropTypes.func.isRequired,
+    emptyShelfText: PropTypes.string
   };
-
+  static defaultProps = {
+    emptyShelfText: 'No books in this shelf'
+  };
   render() {
     const { shelf, books, loading, onMoveBook } = this.props;
 
@@ -30,7 +33,7 @@ class Shelf extends Component {
             <span>Error while loading the books in this shelf</span>
           )}
           {books.length <= 0 &&
-            loading === 'done' && <span>No books in this shelf</span>}
+            loading === 'done' && <span>{this.props.emptyShelfText}</span>}
           {this.props.books.map(book => (
             <div className="col-sm-4 col-md-3" key={book.id}>
               <Book

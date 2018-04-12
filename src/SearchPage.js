@@ -11,7 +11,11 @@ class SearchPage extends Component {
     query: PropTypes.string.isRequired,
     onUpdateQuery: PropTypes.func.isRequired
   };
-
+  getEmptyShelfText() {
+    return this.props.query === ''
+      ? 'Please type in a search string to search books'
+      : 'No books found. Change your searchstring';
+  }
   render() {
     const { onMoveBook, onUpdateQuery, books, loading } = this.props;
     return (
@@ -43,6 +47,7 @@ class SearchPage extends Component {
           loading={loading}
           onMoveBook={onMoveBook}
           books={books}
+          emptyShelfText={this.getEmptyShelfText()}
         />
       </div>
     );
