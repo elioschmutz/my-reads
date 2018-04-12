@@ -41,7 +41,16 @@ class Book extends Component {
             >
               <h5 className="card-title">{book.title}</h5>
             </Link>
-            <p className="card-text">{book.authors}</p>
+            <div className="card-text">
+              <ul className="list-group list-group-flush">
+                {(book.authors &&
+                  book.authors.map(author => (
+                    <li className="list-group-item" key={author}>
+                      {author}
+                    </li>
+                  ))) || <li className="list-group-item">No author</li>}
+              </ul>
+            </div>
           </div>
 
           <div className="card-body">
