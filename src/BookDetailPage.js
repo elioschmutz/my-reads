@@ -45,7 +45,7 @@ class BookDetailPage extends Component {
         </div>
         <div className="row">
           <div className="col col-md-3">
-            <img className="card-img" src={this.bookImage()} />
+            <img className="card-img" src={this.bookImage()} alt="" />
           </div>
           <div className="col col-md-9">
             <h2>{book.title}</h2>
@@ -62,9 +62,9 @@ class BookDetailPage extends Component {
               <li>Language: {languages[book.language]}</li>
             </ul>
             <p>{book.description}</p>
-            <p>
+            <div>
               <MoveBookButton book={book} onMoveBook={onMoveBook} />
-            </p>
+            </div>
           </div>
         </div>
       </div>
