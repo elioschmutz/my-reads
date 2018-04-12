@@ -94,7 +94,7 @@ class App extends Component {
 
           <Route
             exact
-            path="/add-books"
+            path="/search"
             render={() => (
               <SearchPage
                 books={this.state.searchedBooks}

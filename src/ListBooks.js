@@ -18,7 +18,7 @@ class ListBooks extends Component {
     return (
       <div className="list-books">
         <NavigationContainer>
-          <Link className="btn btn-secondary float-right" to="/add-books">
+          <Link className="btn btn-secondary float-right" to="/search">
             <span className="fa fa-plus">&nbsp;</span> Add book
           </Link>
         </NavigationContainer>
