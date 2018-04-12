@@ -15,14 +15,6 @@ class BookDetailPage extends Component {
     onMoveBook: PropTypes.func.isRequired
   };
 
-  componentDidMount() {
-    const { book } = this.props.match.params;
-    if (!book) {
-      return;
-    }
-    console.log(this.props.match.params);
-  }
-
   /**
    * Returns the image url of the book
    * @return {string}
