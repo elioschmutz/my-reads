@@ -3,6 +3,7 @@ import Shelf from './Shelf';
 import PropTypes from 'prop-types';
 import { shelfs } from './config';
 import { Link } from 'react-router-dom';
+import NavigationContainer from './NavigationContainer';
 
 class ListBooks extends Component {
   static propTypes = {
@@ -16,13 +17,11 @@ class ListBooks extends Component {
 
     return (
       <div className="list-books">
-        <div className="row my-3">
-          <div className="col">
-            <Link className="btn btn-secondary float-right" to="/add-books">
-              <span className="fa fa-plus">&nbsp;</span> Add book
-            </Link>
-          </div>
-        </div>
+        <NavigationContainer>
+          <Link className="btn btn-secondary float-right" to="/add-books">
+            <span className="fa fa-plus">&nbsp;</span> Add book
+          </Link>
+        </NavigationContainer>
 
         {shelfs.map(shelf => (
           <Shelf

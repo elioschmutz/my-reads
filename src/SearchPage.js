@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './Book.css';
 import { Link } from 'react-router-dom';
 import Shelf from './Shelf';
+import NavigationContainer from './NavigationContainer';
 
 class SearchPage extends Component {
   static propTypes = {
@@ -21,14 +22,11 @@ class SearchPage extends Component {
     const { onMoveBook, onUpdateQuery, books, loading } = this.props;
     return (
       <div className="add-books">
-        <div className="row my-3">
-          <div className="col">
-            <Link className="btn btn-secondary" to="/">
-              <span className="fa fa-arrow-left">&nbsp;</span> Back
-            </Link>
-          </div>
-        </div>
-
+        <NavigationContainer>
+          <Link className="btn btn-secondary" to="/">
+            <span className="fa fa-arrow-left">&nbsp;</span> Back
+          </Link>
+        </NavigationContainer>
         <div className="row">
           <div className="col">
             <input

@@ -4,6 +4,7 @@ import './Book.css';
 import { Link } from 'react-router-dom';
 import { languages, shelfs } from './config';
 import MoveBookButton from './MoveBookButton';
+import NavigationContainer from './NavigationContainer';
 
 class BookDetailPage extends Component {
   state = {
@@ -36,13 +37,11 @@ class BookDetailPage extends Component {
 
     return (
       <div className="book-detail">
-        <div className="row my-3">
-          <div className="col">
-            <Link className="btn btn-secondary" to="/">
-              <span className="fa fa-arrow-left">&nbsp;</span> Back
-            </Link>
-          </div>
-        </div>
+        <NavigationContainer>
+          <Link className="btn btn-secondary" to="/">
+            <span className="fa fa-arrow-left">&nbsp;</span> Back
+          </Link>
+        </NavigationContainer>
 
         <div className="row">
           <div className="col col-md-3">
