@@ -23,17 +23,10 @@ class Shelf extends Component {
           <div className="col">
             <h2>
               <span className={`fa ${shelf.faClass}`} />
-              {` ${shelf.title}`}
+              {` ${shelf.title}`} {<Spinner loading={loading} />}
             </h2>
           </div>
         </div>
-        {loading === 'loading' && (
-          <div className="row my-3">
-            <div clsasName="col">
-              <Spinner />
-            </div>
-          </div>
-        )}
         <div className="row">
           {loading === 'error' && (
             <span>Error while loading the books in this shelf</span>
