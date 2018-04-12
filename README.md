@@ -2,6 +2,8 @@
 
 Application to track books.
 
+![Demo of the plugin](./docs/assets/demo.gif)
+
 <!-- MarkdownTOC levels="1" autolink=true autoanchor=false bracket="round" -->
 
 * [Installation](#installation)
